@@ -129,8 +129,8 @@ Validate the core functionalities of the SauceDemo e-commerce application to ens
 | Session shared across browser tabs | Low | ✓ | ✓ |
 | Session expires after browser close | Low | ✓ | ✓ |
 
-**Total Test Cases:** 11
-**Total Test Executions:** 11 manual (Edge) + 33 automated (11 cases × 3 browsers)
+- **Total Test Cases:** 11
+- **Total Test Executions:** 11 manual (Edge) + 33 automated (11 cases × 3 browsers)
 
 ---
 
