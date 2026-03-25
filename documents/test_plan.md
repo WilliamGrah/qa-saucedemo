@@ -7,6 +7,16 @@ Validate the core functionalities of the SauceDemo e-commerce application to ens
 
 ---
 
+## Document Version History
+
+| Version | Date | Author | Changes |
+|---------|------|--------|---------|
+| 1.0 | 2025-03-25 | William Grah | Initial version - Authentication module scope defined |
+| 1.1 | 2025-03-26 | William Grah | Added cross-browser testing (Chrome, Firefox, Safari) for automated tests |
+
+
+---
+
 ## Version
 
 - **Version:** 1.0
@@ -64,9 +74,19 @@ Validate the core functionalities of the SauceDemo e-commerce application to ens
 2. **Functional Testing:** Validate all login scenarios (positive and negative)
 
 ### Test Environment
+
+#### Manual Testing
 - **Browser:** Microsoft Edge 143.0.3650.96
 - **OS:** Windows 11 Pro
 - **Resolution:** 1920x1080
+
+#### Automated Testing
+- **Browsers:**
+  - Google Chrome (latest)
+  - Mozilla Firefox (latest)
+  - Safari/Webkit (latest)
+- **OS:** Windows 11 Pro
+- **Automation Framework:** Playwright + Python + Pytest
 
 ### Entry Criteria
 - Test environment is accessible
@@ -105,11 +125,12 @@ Validate the core functionalities of the SauceDemo e-commerce application to ens
 | Login with locked account | High | ✓ | ✓ |
 | Direct URL access without authentication | High | ✓ | ✓ |
 | Logout functionality | Medium | ✓ | ✓ |
-| Session persists after page refresh | Low | ✓ | - |
-| Session shared across browser tabs | Low | ✓ | - |
-| Session expires after browser close | Low | ✓ | - |
+| Session persists after page refresh | Low | ✓ | ✓ |
+| Session shared across browser tabs | Low | ✓ | ✓ |
+| Session expires after browser close | Low | ✓ | ✓ |
 
 **Total Test Cases:** 11
+**Total Test Executions:** 11 manual (Edge) + 33 automated (11 cases × 3 browsers)
 
 ---
 
