@@ -13,6 +13,7 @@ Validate the core functionalities of the SauceDemo e-commerce application to ens
 |---------|------|--------|---------|
 | 1.0 | 2025-03-25 | William Grah | Initial version - Authentication module scope defined |
 | 1.1 | 2025-03-26 | William Grah | Added cross-browser testing (Chrome, Firefox, Safari) for automated tests |
+| 1.2 | 2026-03-27 | William Grah | Added CI pipeline with GitHub Actions |
 
 
 ---
@@ -63,11 +64,20 @@ Validate the core functionalities of the SauceDemo e-commerce application to ens
 ## Test Strategy
 
 ### Testing Approach
-- **Manual Testing:** Execute test cases manually to validate login flows
-- **Automated Testing:** Automate suite using Playwright + Python + Page Object Model
-- **Test Design Techniques:**
-  - Positive Testing (valid credentials allow access)
-  - Negative Testing (invalid credentials, locked users, empty fields are rejected)
+- Manual and automated testing of login flows
+- Positive scenarios (valid users) and negative scenarios (invalid/locked users)
+- Playwright + Python + Page Object Model for automation
+
+### Continuous Integration
+- **Platform:** GitHub Actions
+- **Trigger:** On push to main branch and pull requests
+- **Browsers:** Chrome, Firefox, Safari (Webkit)
+- **Reports:** Test results automatically generated and stored as artifacts
+
+### Test Execution
+- **Manual Tests:** Executed on-demand using Microsoft Edge
+- **Automated Tests:** Run automatically via CI pipeline on every code change
+- **Cross-browser:** CI executes tests on Chrome, Firefox, and Safari
 
 ### Test Types
 1. **Smoke Testing:** Verify basic login functionality works
@@ -143,6 +153,9 @@ Validate the core functionalities of the SauceDemo e-commerce application to ens
 - **Automation Framework:** Playwright + Python + Pytest
 - **Design Pattern:** Page Object Model (POM)
 - **Test Environment:** Microsoft Edge 143.0.3650.96, Windows 11 Pro
+- **CI/CD:** GitHub Actions (continuous integration with automated testing)
 - **Version Control:** Git/GitHub
 
 ---
+
+**Last Updated:** March 2026
