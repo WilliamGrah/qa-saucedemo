@@ -2,11 +2,9 @@ import pytest
 
 from tests.playwright.pages.login_page import LoginPage
 from playwright.sync_api import expect
+from tests.config import BASE_URL, INVENTORY_URL, VALID_USERNAME, \
+    VALID_PASSWORD, LOCKED_USERNAME
 
-BASE_URL = "https://www.saucedemo.com/"
-VALID_USERNAME = "standard_user"
-VALID_PASSWORD = "secret_sauce"
-LOCKED_USERNAME = "locked_out_user"
 
 @pytest.mark.testcase("TC-AUTH-001")
 def test_user_can_login_with_valid_credentials(page):
@@ -14,7 +12,7 @@ def test_user_can_login_with_valid_credentials(page):
     login_page.navigate()
     login_page.login(VALID_USERNAME, VALID_PASSWORD)
 
-    expect(page).to_have_url("https://www.saucedemo.com/inventory.html")
+    expect(page).to_have_url(INVENTORY_URL)
 
 @pytest.mark.testcase("TC-AUTH-002")
 def test_user_cannot_login_with_invalid_username(page):
@@ -75,13 +73,13 @@ def test_logged_user_should_be_able_to_logout(page):
     page.locator("button#react-burger-menu-btn").click()
     page.locator("a[data-test='logout-sidebar-link']").click()
 
-    expect(page).to_have_url(BASE_URL)
+    expect(page).to_have_url(BASE_URL + "/")
 
 @pytest.mark.testcase("TC-AUTH-008")
 def test_url_access_without_authentication(page):
-    page.goto("https://www.saucedemo.com/inventory.html")
+    page.goto(INVENTORY_URL)
 
-    expect(page).to_have_url(BASE_URL)
+    expect(page).to_have_url(BASE_URL + "/")
 
 @pytest.mark.testcase("TC-AUTH-009")
 def test_session_persistence_after_refresh(page):
@@ -91,7 +89,7 @@ def test_session_persistence_after_refresh(page):
 
     page.reload()
 
-    expect(page).to_have_url("https://www.saucedemo.com/inventory.html")
+    expect(page).to_have_url(INVENTORY_URL)
 
 @pytest.mark.testcase("TC-AUTH-010")
 def test_session_persistence_across_tabs(page, context):
@@ -100,9 +98,9 @@ def test_session_persistence_across_tabs(page, context):
     login_page.login(VALID_USERNAME, VALID_PASSWORD)
 
     new_page = context.new_page()
-    new_page.goto("https://www.saucedemo.com/inventory.html")
+    new_page.goto(INVENTORY_URL)
 
-    expect(new_page).to_have_url("https://www.saucedemo.com/inventory.html")
+    expect(new_page).to_have_url(INVENTORY_URL)
 
 @pytest.mark.testcase("TC-AUTH-011")
 def test_session_expiration_after_browser_close(page, context, browser):
@@ -110,12 +108,14 @@ def test_session_expiration_after_browser_close(page, context, browser):
     login_page.navigate()
     login_page.login(VALID_USERNAME, VALID_PASSWORD)
 
-    storage_state = context.storage_state()
+    expect(page).to_have_url(INVENTORY_URL)
+
     page.close()
     context.close()
 
-    new_context = browser.new_context(storage_state=storage_state)
+    new_context = browser.new_context()
     new_page = new_context.new_page()
-    new_page.goto("https://www.saucedemo.com/inventory.html")
+    new_page.goto(INVENTORY_URL)
 
-    expect(new_page).to_have_url("https://www.saucedemo.com/inventory.html")
+    expect(new_page).to_have_url(BASE_URL + "/")
+    expect(new_page.locator('[data-test="login-button"]')).to_be_visible()
