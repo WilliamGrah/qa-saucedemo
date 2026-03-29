@@ -16,3 +16,11 @@ def screenshot_on_failure(request, page):
         marker = request.node.get_closest_marker("testcase")
         name = marker.args[0] if marker else request.node.name
         page.screenshot(path=f"test-results/{name}.png")
+
+
+@pytest.fixture
+def logged_in(page):
+    login_page = LoginPage(page)
+    login_page.navigate()
+    login_page.login("standard_user", "secret_sauce")
+    return page
