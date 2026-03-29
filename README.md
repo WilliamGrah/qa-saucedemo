@@ -14,7 +14,7 @@ Validate the core functionalities of the SauceDemo e-commerce application to ens
 | 1.0 | 2025-03-25 | William Grah | Initial version - Authentication module scope defined |
 | 1.1 | 2025-03-26 | William Grah | Added cross-browser testing (Chrome, Firefox, Safari) for automated tests |
 | 1.2 | 2026-03-27 | William Grah | Added CI pipeline with GitHub Actions |
-
+| 1.3 | 2026-03-30 | William Grah | Added Inventory module scope and test cases |
 
 ---
 
@@ -31,6 +31,7 @@ Validate the core functionalities of the SauceDemo e-commerce application to ens
 
 ### In Scope
 - **Authentication Module:** Login, logout, locked users, invalid credentials, session management
+- **Inventory Module:** Product display, add/remove from cart, cart badge, product navigation, sorting
 
 
 ### Out of Scope
@@ -115,12 +116,12 @@ Validate the core functionalities of the SauceDemo e-commerce application to ens
 | Activity | Description | Duration | Deliverables |
 |----------|-------------|----------|--------------|
 | **Test Planning** | Create test plan document | 1 day | Test Plan (this document) |
-| **Test Design** | Write test cases for authentication module | 1 days | 11 test cases in Markdown |
-| **Manual Testing** | Execute test cases manually | 1 day | Test execution results |
-| **Test Automation** | Develop automated tests with Playwright | 2 day | Automated test suite (Python) |
+| **Test Design** | Write test cases for authentication and inventory modules | 2 days | 22 test cases in Markdown |
+| **Manual Testing** | Execute test cases manually | 2 days | Test execution results |
+| **Test Automation** | Develop automated tests with Playwright | 3 days | Automated test suite (Python) |
 | **Test Reporting** | Document results and bugs found | 1 day | Test summary report |
 
-**Total Estimated Effort:** 6 days
+**Total Estimated Effort:** 9 days
 
 ---
 
@@ -128,19 +129,35 @@ Validate the core functionalities of the SauceDemo e-commerce application to ens
 
 | Test Scenario | Priority | Manual | Automated |
 |---------------|----------|--------|-----------|
+| Test Scenario | Priority | Manual | Automated |
+|---------------|----------|--------|-----------|
+| **Authentication** | | | |
 | Login with valid credentials | High | ✓ | ✓ |
 | Login with invalid username | High | ✓ | ✓ |
 | Login with invalid password | High | ✓ | ✓ |
-| Login with empty fields | Medium | ✓ | ✓ |
+| Login with empty username | Medium | ✓ | ✓ |
+| Login with empty password | Medium | ✓ | ✓ |
 | Login with locked account | High | ✓ | ✓ |
 | Direct URL access without authentication | High | ✓ | ✓ |
 | Logout functionality | Medium | ✓ | ✓ |
 | Session persists after page refresh | Low | ✓ | ✓ |
 | Session shared across browser tabs | Low | ✓ | ✓ |
 | Session expires after browser close | Low | ✓ | ✓ |
+| **Inventory** | | | |
+| Products should be displayed | High | ✓ | ✓ |
+| Add to cart button functionality | High | ✓ | ✓ |
+| Remove from cart button functionality | High | ✓ | ✓ |
+| Cart badge displays item count | Medium | ✓ | ✓ |
+| Product information displayed | Medium | ✓ | ✓ |
+| Product title links to details | Medium | ✓ | ✓ |
+| Product image links to details | Medium | ✓ | ✓ |
+| Sort products by name (A-Z) | Medium | ✓ | ✓ |
+| Sort products by name (Z-A) | Medium | ✓ | ✓ |
+| Sort products by price (low-high) | Medium | ✓ | ✓ |
+| Sort products by price (high-low) | Medium | ✓ | ✓ |
 
-- **Total Test Cases:** 11
-- **Total Test Executions:** 11 manual (Edge) + 33 automated (11 cases × 3 browsers)
+- **Total Test Cases:** 22
+- **Total Test Executions:** 22 manual (Edge) + 66 automated (22 cases × 3 browsers)
 
 ---
 
